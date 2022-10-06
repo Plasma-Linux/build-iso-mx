@@ -1304,9 +1304,11 @@ do_stage_4() {
     apt purge -y powertop
     #Gnomeヘルプを削除
     apt purge -y yelp yelp-xsl gnome-user-docs
-    #plasma-discoverのインストールとgnome-softwareの削除
-    sudo apt install -y plasma-discover && sudo purge -y gnome-software
-     #アイコン差し替え
+    #plasma-discoverのインストール
+    sudo apt install -y plasma-discover plasma-discover-backend-flatpak
+    #念のため再度リポジトリ設定
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    #アイコンの変更
     ln -fs /usr/share/icons/gnome/16x16/places/oyo-logo-16.png /etc/alternatives/start-here-16.png
     ln -fs /usr/share/icons/gnome/22x22/places/oyo-logo-22.png /etc/alternatives/start-here-22.png
     ln -fs /usr/share/icons/gnome/24x24/places/oyo-logo-24.png /etc/alternatives/start-here-24.png
